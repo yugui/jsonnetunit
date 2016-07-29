@@ -2,6 +2,8 @@ load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_library", "jsonnet
 load("@io_bazel_skydoc//skylark:skylark.bzl", "skylark_doc")
 load("//:jsonnetunit.bzl", "jsonnet_test")
 
+licenses(["notice"])  # Apache 2.0
+
 jsonnet_library(
     name = "jsonnetunit",
     srcs = [
