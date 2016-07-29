@@ -1,4 +1,5 @@
 load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_library", "jsonnet_to_json_test")
+load("@io_bazel_skydoc//skylark:skylark.bzl", "skylark_doc")
 load("//:jsonnetunit.bzl", "jsonnet_test")
 
 jsonnet_library(
@@ -26,3 +27,8 @@ jsonnet_to_json_test(
 )
 
 exports_files(["dummy.golden"])
+
+skylark_doc(
+    name = "jsonnetunit-docs",
+    srcs = ["jsonnetunit.bzl"],
+)

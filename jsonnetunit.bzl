@@ -4,17 +4,12 @@ def jsonnet_test(name, src, deps=[], **kwargs):
   """Runs a jsonnetunit test
 
   Args:
-    name: `Name, required`
-      
-      A unique name for this rule
-    src: `Label, required`,
-      
-      A `.jsonnet` which contains a jsonnetunit test suite
-    deps: `List of Labels, optional`
-      
-      List of `jsonnet_library` rules which `src` depends on.
+    name: A unique name for this rule
+    src: A `.jsonnet` which contains a jsonnetunit test suite
+    deps: List of `jsonnet_library` rules which `src` depends on.
 
-  Also this rule accepts other attributes defined in `jsonnet_to_json_test` rule
+  ### Note
+  This rule also accepts other attributes defined in `jsonnet_to_json_test` rule
   except `golden`, `error` or `regex`.
   """
   for key in ["golden", "error", "regex"]:
