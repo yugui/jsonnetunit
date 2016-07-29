@@ -25,5 +25,17 @@ test.suite({
         actual:    {a: 1, b: 2, c: 3},
         expectNot: {a: 1, b: 4, c: 3},
     },
+} + {
+    testExpectThatFunction: {
+        actual: 1,
+        expectThat: function(actual) actual == 1,
+    },
+    testExpectThatObject: {
+        actual: 1,
+        expectThat: {
+            actual: error "to be provided",
+            result: self.actual == 1,
+        },
+    },
 })
 
