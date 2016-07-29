@@ -42,6 +42,15 @@ jsonnet_test(
     src = "std_matchers_test.jsonnet",
 )
 
+jsonnet_to_json_test(
+    name = "std_matchers_failure_test",
+    src = "std_matchers_failure_test.jsonnet",
+    error = 1,
+    golden = "golden/std_matchers_failure_test.golden",
+    regex = 1,
+    deps = [":jsonnetunit"],
+)
+
 exports_files(["dummy.golden"])
 
 skylark_doc(

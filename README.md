@@ -27,6 +27,8 @@ $ jsonnet example_test.jsonet
 }
 ```
 
+See `std_matchers_test.jsonnet` for more examples of other matchers.
+
 ## How to install
 
 Just `git clone`.

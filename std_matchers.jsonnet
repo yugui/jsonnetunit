@@ -6,6 +6,29 @@ local equalMatcher(actual, expectation) = baseMatcher {
     negativeMessage: "Expected " + actual + " not to be " + expectation,
 };
 
+local ltMatcher(actual, expectation) = baseMatcher {
+    satisfied: actual < expectation,
+    positiveMessage: "Expected " + actual + " to be less than " + expectation,
+};
+
+local leMatcher(actual, expectation) = baseMatcher {
+    satisfied: actual <= expectation,
+    positiveMessage: "Expected " + actual +
+        " to be less than or equal to " + expectation,
+};
+
+local gtMatcher(actual, expectation) = baseMatcher {
+    satisfied: actual > expectation,
+    positiveMessage: "Expected " + actual +
+        " to be greater than " + expectation,
+};
+
+local geMatcher(actual, expectation) = baseMatcher {
+    satisfied: actual >= expectation,
+    positiveMessage: "Expected " + actual +
+        " to be greater than or equal to " + expectation,
+};
+
 local thatMatcher(actual, expectation) = baseMatcher {
     satisfied: (
         if std.type(expectation) == "function" then
@@ -14,7 +37,6 @@ local thatMatcher(actual, expectation) = baseMatcher {
             (expectation {actual: actual}).result
     ),
     positiveMessage: "Expected " + actual + " to satisfy " + self.description,
-    negativeMessage: "Expected " + actual + " not to satisfy " + self.description,
     description:: (
         if std.type(expectation) == "function" then
             "the function"
@@ -35,6 +57,22 @@ local thatMatcher(actual, expectation) = baseMatcher {
     expectNot: {
         matcher: equalMatcher,
         expectationType: false,
+    },
+    expectLt: {
+        matcher: ltMatcher,
+        expectationType: true,
+    },
+    expectLe: {
+        matcher: leMatcher,
+        expectationType: true,
+    },
+    expectGt: {
+        matcher: gtMatcher,
+        expectationType: true,
+    },
+    expectGe: {
+        matcher: geMatcher,
+        expectationType: true,
     },
     expectThat: {
         matcher: thatMatcher,

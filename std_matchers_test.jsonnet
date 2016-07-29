@@ -26,6 +26,31 @@ test.suite({
         expectNot: {a: 1, b: 4, c: 3},
     },
 } + {
+    testExpectLt: {
+        actual: 1,
+        expectLt: 2,
+    },
+    testExpectLe: {
+        actual: 1,
+        expectLe: 2,
+    },
+    testExpectLeEq: {
+        actual: 1,
+        expectLe: 1,
+    },
+    testExpectGt: {
+        actual: 2,
+        expectGt: 1,
+    },
+    testExpectGe: {
+        actual: 2,
+        expectGe: 1,
+    },
+    testExpectGeEq: {
+        actual: 2,
+        expectGe: 2,
+    },
+} + {
     testExpectThatFunction: {
         actual: 1,
         expectThat: function(actual) actual == 1,
