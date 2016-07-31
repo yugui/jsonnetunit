@@ -7,5 +7,5 @@ testLt: Expected 2 to be less than 1
 testLtEq: Expected 2 to be less than 2
 testNe: Expected 1 not to be 1
 testThatFunction: Expected 1 to satisfy the function
-testThatObject: Expected 1 to satisfy {"actual": 1, "result": false}
+testThatObject: Expected 1 to satisfy \{"actual": 1, "result": false\}
 testThatObjectDesc: Expected 1 to satisfy the condition that the value is 2
