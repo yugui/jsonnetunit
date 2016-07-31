@@ -1,5 +1,7 @@
 # JsonnetUnit
 
+[![Build Status](https://travis-ci.org/yugui/jsonnetunit.svg?branch=master)](https://travis-ci.org/yugui/jsonnetunit)
+
 Jsonnetunit is a unit test framework for [Jsonnet](http://jsonnet.org/).
 
 ## Examples
