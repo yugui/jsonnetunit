@@ -11,7 +11,7 @@ RELEASE_BASE_URI=https://github.com/bazelbuild/bazel/releases/download/$VERSION
 REQUIRE_INSTALL=true
 if test -x $HOME/local/$INSTALLER; then
   cd $HOME/local
-  if curl $RELEASE_BASE_URI/$INSTALLER.sha256 | sha256sum; then
+  if curl $RELEASE_BASE_URI/$INSTALLER.sha256 | sha256sum -c; then
     REQUIRE_INSTALL=false
   fi
 fi
