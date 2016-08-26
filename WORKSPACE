@@ -2,8 +2,8 @@ workspace(name = "com_github_yugui_jsonnetunit")
 
 git_repository(
     name = "io_bazel_rules_jsonnet",
+    commit = "4b5b408219a5a050c24badeeeab5197b4e9b493b",
     remote = "https://github.com/bazelbuild/rules_jsonnet.git",
-    tag = "0.0.2",
 )
 
 load("@io_bazel_rules_jsonnet//jsonnet:jsonnet.bzl", "jsonnet_repositories")

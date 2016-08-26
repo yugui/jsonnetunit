@@ -20,13 +20,6 @@ def jsonnet_test(name, src, deps=[], **kwargs):
       name = name,
       src = src,
       deps = deps + ["@com_github_yugui_jsonnetunit//:jsonnetunit"],
-
-      # workaround for https://github.com/bazelbuild/rules_jsonnet/issues/9
-      # TODO(yugui) Remove these attributes and :dummy.golden once the issue is
-      # fixed.
-      golden = "@com_github_yugui_jsonnetunit//:dummy.golden",
-      regex = 1,
-
       **kwargs
   )
 
