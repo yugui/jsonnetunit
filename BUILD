@@ -51,8 +51,6 @@ jsonnet_to_json_test(
     deps = [":jsonnetunit"],
 )
 
-exports_files(["dummy.golden"])
-
 skylark_doc(
     name = "jsonnetunit-docs",
     srcs = ["jsonnetunit.bzl"],
