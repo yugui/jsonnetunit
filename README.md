@@ -186,7 +186,7 @@ Use `jsonnet_test` rule.
   git_repository(
       name = "com_github_yugui_jsonnetunit",
       remote = "https://github.com/yugui/jsonnetunit.git",
-      tag = "0.0.2",
+      tag = "0.2.0",
   )
   ```
   
