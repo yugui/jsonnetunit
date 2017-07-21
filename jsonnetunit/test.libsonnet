@@ -7,7 +7,7 @@ local testCase(matchers, name, spec) = (
             matcher: matchers[matcherName].matcher(spec.actual, spec[matcherName]),
             expectationType: matchers[matcherName].expectationType,
         } for matcherName in std.objectFields(matchers) if
-        std.objectHas(spec, matcherName)
+            std.objectHas(spec, matcherName)
     ];
     if std.length(candidates) == 0 then
         error "Unrecognized spec " + spec + " "
@@ -23,7 +23,7 @@ local suite(tests) = {
     result:: [
         testCase(self.matchers, t, tests[t]) for
         t in std.objectFields(tests) if
-        std.startsWith(t, 'test')
+            std.startsWith(t, 'test')
     ],
 
     verify: (
