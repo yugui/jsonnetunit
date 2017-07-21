@@ -1,4 +1,4 @@
-local baseMatcher = import "matcher.jsonnet";
+local baseMatcher = import "matcher.libsonnet";
 
 local equalMatcher(actual, expectation) = baseMatcher {
     satisfied: actual == expectation,
