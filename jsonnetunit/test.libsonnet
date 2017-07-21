@@ -1,4 +1,4 @@
-local stdMatchers = import "std_matchers.jsonnet";
+local stdMatchers = import "std_matchers.libsonnet";
 
 local testCase(matchers, name, spec) = (
     local candidates = [

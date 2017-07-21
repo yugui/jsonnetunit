@@ -1,4 +1,4 @@
-local test = import "test.jsonnet";
+local test = import "jsonnetunit/test.libsonnet";
 
 test.suite({
     testEq: {actual: 1, expect: 2},

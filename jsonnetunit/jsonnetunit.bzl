@@ -19,7 +19,7 @@ def jsonnet_test(name, src, deps=[], **kwargs):
   jsonnet_to_json_test(
       name = name,
       src = src,
-      deps = deps + ["@com_github_yugui_jsonnetunit//:jsonnetunit"],
+      deps = deps + ["@com_github_yugui_jsonnetunit//jsonnetunit"],
       **kwargs
   )
 
