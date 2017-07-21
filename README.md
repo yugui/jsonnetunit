@@ -10,7 +10,7 @@ Jsonnetunit is a unit test framework for [Jsonnet](http://jsonnet.org/).
 
 `example_test.jsonnet`:
 ```jsonnet
-local test = import "path/to/jsonnetunit/test.jsonnet";
+local test = import "jsonnetunit/test.libsonnet";
 
 test.suite({
     testIdentity: {actual: 1, expect: 1},
@@ -24,14 +24,26 @@ test.suite({
 })
 ```
 
+Then, just evaluate your test file with `jsonnet`.
 ```console
-$ jsonnet example_test.jsonnet
+$ jsonnet -J path/to/jsonnetunit example_test.libsonnet
 {
     "verify": "Passed 3 test cases"
 }
 ```
 
-See `std_matchers_test.jsonnet` for more examples of other matchers.
+On failure, it emits an error report and exits with non-zero status.
+```console
+$ jsonnet -J path/to/jsonnetunit example_test.jsonnet
+RUNTIME ERROR: Failed 11/11 test cases:
+testFoo: Expected 1 to be 2
+testBar: Expected 1 to satisfy the function
+testBaz: Expected 1 to satisfy the condition that the value is between 1 and 2
+      ./jsonnetunit/test.libsonnet:40:13-25   object <anonymous>
+      During manifestation
+```
+
+See `jsonnet/test/std_matchers_test.jsonnet` for more examples of other matchers.
 
 ## How to install
 
@@ -50,7 +62,7 @@ $ git clone https://github.com/yugui/jsonnetunit.git
     Test files must be `.jsonnet` files which manifestize a result of `test.suite` function.
 
     ```jsonnet
-    local test = import "path/to/jsonnetunit/test.jsonnet";
+    local test = import "path/to/jsonnetunit/test.libsonnet";
     test.suite({
     })
     ```
@@ -130,7 +142,7 @@ You can also define your own expectation matcher.
 
     e.g.
     ```jsonnet
-    local setMatcher(actual, expected) = import "path/to/matcher.jsonnet" {
+    local setMatcher(actual, expected) = import "jsonnetunit/matcher.libsonnet" {
         satisfied: std.set(actual) == std.set(expected),
         positiveMessage: "Expected " + actual + " to be equal to " + expected + " as a set",
         negativeMessage: "Expected " + actual + " not to be equal to " + expected + " as a set",
@@ -164,6 +176,30 @@ You can also define your own expectation matcher.
         },
     }
     ```
+    
+### Running with [Bazel](https://bazel.build/)
+Use `jsonnet_test` rule.
+* `WORKSPACE`:
+  
+  ```bzl
+  ...
+  git_repository(
+      name = "com_github_yugui_jsonnetunit",
+      remote = "https://github.com/yugui/jsonnetunit.git",
+      tag = "0.0.2",
+  )
+  ```
+  
+* `BUILD`:
+  
+  ```bzl
+  load("@com_github_yugui_jsonnetunit//jsonnetunit:jsonnetunit.bzl", "jsonnet_test")
+  
+  jsonnet_test(
+      name = "your_test",
+      src = "your_test.jsonnet",
+  )   
+  ```
 
 # Copyright
 
