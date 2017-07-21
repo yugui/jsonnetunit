@@ -14,34 +14,34 @@ local ltMatcher(actual, expectation) = baseMatcher {
 local leMatcher(actual, expectation) = baseMatcher {
     satisfied: actual <= expectation,
     positiveMessage: "Expected " + actual +
-        " to be less than or equal to " + expectation,
+                     " to be less than or equal to " + expectation,
 };
 
 local gtMatcher(actual, expectation) = baseMatcher {
     satisfied: actual > expectation,
     positiveMessage: "Expected " + actual +
-        " to be greater than " + expectation,
+                     " to be greater than " + expectation,
 };
 
 local geMatcher(actual, expectation) = baseMatcher {
     satisfied: actual >= expectation,
     positiveMessage: "Expected " + actual +
-        " to be greater than or equal to " + expectation,
+                     " to be greater than or equal to " + expectation,
 };
 
 local thatMatcher(actual, expectation) = baseMatcher {
     satisfied: (
         if std.type(expectation) == "function" then
             expectation(actual)
-        else 
-            (expectation {actual: actual}).result
+        else
+            (expectation { actual: actual }).result
     ),
     positiveMessage: "Expected " + actual + " to satisfy " + self.description,
     description:: (
         if std.type(expectation) == "function" then
             "the function"
         else
-            local evaluation = expectation{actual: actual};
+            local evaluation = expectation { actual: actual };
             if std.objectHas(evaluation, "description") then
                 evaluation.description
             else

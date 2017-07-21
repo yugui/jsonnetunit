@@ -6,7 +6,7 @@ local stubMatcher(actual, expected) = matcher {
 };
 
 test.suite({
-    testDummy: {actual: 'something', expectStub: 'something'},
+    testDummy: { actual: 'something', expectStub: 'something' },
 }) {
     matchers+: {
         expectStub: {
