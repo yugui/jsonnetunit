@@ -26,7 +26,7 @@ test.suite({
 
 Then, just evaluate your test file with `jsonnet`.
 ```console
-$ jsonnet -J path/to/jsonnetunit example_test.libsonnet
+$ jsonnet -J path/to/jsonnetunit example_test.jsonnet
 {
     "verify": "Passed 3 test cases"
 }
@@ -38,8 +38,8 @@ $ jsonnet -J path/to/jsonnetunit example_test.jsonnet
 RUNTIME ERROR: Failed 11/11 test cases:
 testFoo: Expected 1 to be 2
 testBar: Expected 1 to satisfy the function
-testBaz: Expected 1 to satisfy the condition that the value is between 1 and 2
-      ./jsonnetunit/test.libsonnet:40:13-25   object <anonymous>
+testBaz: Expected 1 to satisfy the condition that the value is between 2 and 3
+      path/to/jsonnetunit/jsonnetunit/test.libsonnet:40:13-25   object <anonymous>
       During manifestation
 ```
 
