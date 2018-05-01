@@ -8,7 +8,7 @@ local_repository(
 
 git_repository(
     name = "io_bazel_rules_jsonnet",
-    commit = "04d49278cfe19828d9d041e2f4f30988daa8198d",
+    commit = "b44bf8d76e0702ae06fd5422e8397f8162d7f5ca",
     remote = "https://github.com/bazelbuild/rules_jsonnet.git",
 )
 
