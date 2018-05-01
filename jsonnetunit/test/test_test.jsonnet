@@ -1,17 +1,17 @@
-local test = import "jsonnetunit/test.libsonnet";
-local matcher = import "jsonnetunit/matcher.libsonnet";
+local matcher = import 'jsonnetunit/matcher.libsonnet';
+local test = import 'jsonnetunit/test.libsonnet';
 
 local stubMatcher(actual, expected) = matcher {
-    satisfied: true,
+  satisfied: true,
 };
 
 test.suite({
-    testDummy: { actual: 'something', expectStub: 'something' },
+  testDummy: { actual: 'something', expectStub: 'something' },
 }) {
-    matchers+: {
-        expectStub: {
-            matcher: stubMatcher,
-            expectationType: true,
-        },
+  matchers+: {
+    expectStub: {
+      matcher: stubMatcher,
+      expectationType: true,
     },
+  },
 }
