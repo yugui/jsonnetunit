@@ -26,7 +26,7 @@ addons:
     - g++
 
 before_install:
-- .travis/install-bazel.sh 0.5.2
+- .travis/install-bazel.sh 0.13.0
 - bazel version
 - bazel info
 - bazel fetch --curses=no -- "//... -//:jsonnetunit-docs"
