@@ -51,31 +51,31 @@ local thatMatcher(actual, expectation) = baseMatcher {
 
 {
   expect: {
-    matcher: equalMatcher,
+    matcher:: equalMatcher,
     expectationType: true,
   },
   expectNot: {
-    matcher: equalMatcher,
+    matcher:: equalMatcher,
     expectationType: false,
   },
   expectLt: {
-    matcher: ltMatcher,
+    matcher:: ltMatcher,
     expectationType: true,
   },
   expectLe: {
-    matcher: leMatcher,
+    matcher:: leMatcher,
     expectationType: true,
   },
   expectGt: {
-    matcher: gtMatcher,
+    matcher:: gtMatcher,
     expectationType: true,
   },
   expectGe: {
-    matcher: geMatcher,
+    matcher:: geMatcher,
     expectationType: true,
   },
   expectThat: {
-    matcher: thatMatcher,
+    matcher:: thatMatcher,
     expectationType: true,
   },
 }

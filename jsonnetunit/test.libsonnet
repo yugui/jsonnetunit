@@ -48,5 +48,5 @@ local suite(tests) = {
 };
 
 {
-  suite: suite,
+  suite:: suite,
 }
