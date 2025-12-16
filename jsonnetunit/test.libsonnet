@@ -34,19 +34,26 @@ local suite(tests) = {
       if !tc.matcher.matches(tc.expectationType)
     ];
     if std.length(failures) > 0 then
-      local message = 'Failed %d/%d test cases:\n' % [
-        std.length(failures),
-        std.length(self.result),
-      ] + std.join('\n', [
-        '%s: %s' % [tc.name, tc.matcher.message(tc.expectationType)]
-        for tc in failures
-      ]);
-      error message
+      (
+        local message = 'Failed %d/%d test cases' % [
+          std.length(failures),
+          std.length(self.result),
+        ];
+        local failureMessages =
+          [
+            { [tc.name]: tc.matcher.message(tc.expectationType) }
+            for tc in failures
+          ];
+        {
+          failures: failureMessages,
+          result: message,
+        }
+      )
     else
       'Passed %d test cases' % std.length(self.result)
   ),
 };
 
 {
-  suite: suite,
+  suite:: suite,
 }
