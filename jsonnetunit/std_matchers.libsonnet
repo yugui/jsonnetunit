@@ -2,41 +2,60 @@ local baseMatcher = import 'matcher.libsonnet';
 
 local equalMatcher(actual, expectation) = baseMatcher {
   satisfied: actual == expectation,
-  positiveMessage: 'Expected ' + actual + ' to be ' + expectation,
-  negativeMessage: 'Expected ' + actual + ' not to be ' + expectation,
+  positiveMessage: {
+    Expected: actual,
+    'to be': expectation,
+  },
+  negativeMessage: {
+    expected: actual,
+    'not to be': expectation,
+  },
 };
 
 local ltMatcher(actual, expectation) = baseMatcher {
   satisfied: actual < expectation,
-  positiveMessage: 'Expected ' + actual + ' to be less than ' + expectation,
+  positiveMessage: {
+    Expected: actual,
+    'to be less than': expectation,
+  },
 };
 
 local leMatcher(actual, expectation) = baseMatcher {
   satisfied: actual <= expectation,
-  positiveMessage: 'Expected ' + actual +
-                   ' to be less than or equal to ' + expectation,
+  positiveMessage: {
+    Expected: actual,
+    'to be less than or equal to': expectation,
+  },
 };
 
 local gtMatcher(actual, expectation) = baseMatcher {
   satisfied: actual > expectation,
-  positiveMessage: 'Expected ' + actual +
-                   ' to be greater than ' + expectation,
+  positiveMessage: {
+    Expected: actual,
+    'to be greater than': expectation,
+  },
 };
 
 local geMatcher(actual, expectation) = baseMatcher {
   satisfied: actual >= expectation,
-  positiveMessage: 'Expected ' + actual +
-                   ' to be greater than or equal to ' + expectation,
+  positiveMessage: {
+    Expected: actual,
+    'to be greater than or equal to': expectation,
+  },
 };
 
 local thatMatcher(actual, expectation) = baseMatcher {
+  local this = self,
   satisfied: (
     if std.type(expectation) == 'function' then
       expectation(actual)
     else
       (expectation { actual: actual }).result
   ),
-  positiveMessage: 'Expected ' + actual + ' to satisfy ' + self.description,
+  positiveMessage: {
+    Expected: actual,
+    'to satisfy': this.description,
+  },
   description:: (
     if std.type(expectation) == 'function' then
       'the function'
