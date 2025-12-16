@@ -1,7 +1,10 @@
 local test = import 'jsonnetunit/test.libsonnet';
 
 test.suite({
-  testEq: { actual: 1, expect: 2 },
+  testEq: {
+    actual: 1,
+    expect: 2,
+  },
   testNe: { actual: 1, expectNot: 1 },
 
   testLt: { actual: 2, expectLt: 1 },
